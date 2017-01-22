@@ -1,2 +1,6 @@
 #!/bin/bash
-docker run -d -v /home/william/dev/notebooks/fsharp/reconstruction:/notebooks -p 8888:8888  ifsharp:3.0.0-alpha
+docker stop jupyter
+docker rm jupyter
+docker run -d -v `pwd`:/notebooks -p 8888:8888 --name jupyter ifsharp:3.0.0-alpha 
+echo "copy and paste the below link to get into the web interface"
+docker exec -it jupyter jupyter notebook list
